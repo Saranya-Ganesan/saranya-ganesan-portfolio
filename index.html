@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ 
+    darkMode: true, 
+    activeSkillTab: 'all', 
+    emailCopied: false, 
+    mobileMenuOpen: false 
+}" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saranya Ganesan | Senior Java Backend Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#16a34a',
+                            600: '#15803d',
+                            700: '#166534',
+                        },
+                        accent: {
+                            blue: '#0284c7',
+                            amber: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons & Alpine.js -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+        html { scroll-behavior: smooth; }
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-brand-500 inline-block"></span>
+                <span>SARANYA GANESAN</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#summary" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Summary</a>
+                <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Technical Skills</a>
+                <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Professional Experience</a>
+                <a href="#projects" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Featured System</a>
+                <a href="#education" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Education & Certs</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button @click="darkMode = !darkMode" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:scale-105 transition-transform" aria-label="Toggle Theme">
+                    <template x-if="!darkMode"><i data-lucide="moon" class="w-5 h-5"></i></template>
+                    <template x-if="darkMode"><i data-lucide="sun" class="w-5 h-5 text-amber-400"></i></template>
+                </button>
+
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                    <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div x-show="mobileMenuOpen" x-cloak class="md:hidden glass border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-4 space-y-2 text-center text-sm font-medium">
+            <a @click="mobileMenuOpen = false" href="#summary" class="block py-2">Summary</a>
+            <a @click="mobileMenuOpen = false" href="#skills" class="block py-2">Technical Skills</a>
+            <a @click="mobileMenuOpen = false" href="#experience" class="block py-2">Professional Experience</a>
+            <a @click="mobileMenuOpen = false" href="#projects" class="block py-2">Featured System</a>
+            <a @click="mobileMenuOpen = false" href="#education" class="block py-2">Education & Certs</a>
+        </div>
+    </header>
+
+    <!-- Hero / Header Summary -->
+    <section id="summary" class="py-16 lg:py-20 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-500 text-xs font-semibold tracking-wide uppercase">
+                        Senior Backend Engineer • Enterprise Distributed Systems
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                        Saranya Ganesan
+                    </h1>
+                    <p class="text-xl font-semibold text-slate-700 dark:text-slate-300 font-mono">
+                        Java 21 | Spring Boot 3.x | Microservices | Kafka | Apollo GraphQL
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed max-w-3xl">
+                        Backend Engineer with 5+ years of experience building enterprise APIs and distributed systems across airline, financial-services, telecom, and startup environments. Specialized in Java 21, Spring Boot 3.x, Microservices, Kafka, GraphQL/Apollo Federation, PostgreSQL, AWS, and Kubernetes/OpenShift. Proven ownership of greenfield services, stateless aggregation/service orchestration, event-driven architecture, API security, CI/CD quality gates, production observability, and high-impact incident resolution.
+                    </p>
+
+                    <!-- Contact Bar -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2 text-sm font-medium">
+                        <button @click="navigator.clipboard.writeText('saranyadeveloper95@gmail.com'); emailCopied = true; setTimeout(() => emailCopied = false, 2500)" 
+                                class="px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white transition-all flex items-center gap-2 shadow-sm">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span x-text="emailCopied ? 'Email Copied!' : 'saranyadeveloper95@gmail.com'"></span>
+                        </button>
+
+                        <a href="https://linkedin.com/in/saranya-ganesan-texas" target="_blank" class="px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-blue-600"></i> LinkedIn Profile
+                        </a>
+
+                        <a href="https://github.com/saranyaganesandeveloper" target="_blank" class="px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+
+                        <span class="px-4 py-2.5 text-slate-600 dark:text-slate-400 font-mono flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4"></i> +91-8760 46 47 00
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Callout Card -->
+                <div class="lg:col-span-4">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Engineering Impact Highlights</h3>
+                        
+                        <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+                            <div class="text-2xl font-bold text-brand-600 dark:text-brand-500 font-mono">~418 RPM</div>
+                            <div class="text-xs text-slate-500">Dual-Region Enterprise GraphQL Production Traffic</div>
+                        </div>
+
+                        <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+                            <div class="text-2xl font-bold text-slate-900 dark:text-white font-mono">80%+ JUnit</div>
+                            <div class="text-xs text-slate-500">Test Coverage with Embedded Postgres & WireMock</div>
+                        </div>
+
+                        <div>
+                            <div class="text-2xl font-bold text-blue-600 dark:text-cyan-400 font-mono">&lt; 1 Business Day</div>
+                            <div class="text-xs text-slate-500">High-Impact Auth Incident RCA & SLA Resolution</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section id="skills" class="py-16 bg-slate-100/60 dark:bg-slate-900/40 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Technical Skills & Competencies</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Categorized expertise across the modern enterprise backend stack.</p>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <button @click="activeSkillTab = 'all'" :class="activeSkillTab === 'all' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-white text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700'" class="px-3 py-1.5 rounded-lg transition-colors">All</button>
+                    <button @click="activeSkillTab = 'backend'" :class="activeSkillTab === 'backend' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-white text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700'" class="px-3 py-1.5 rounded-lg transition-colors">Backend & Core</button>
+                    <button @click="activeSkillTab = 'apis'" :class="activeSkillTab === 'apis' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-white text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700'" class="px-3 py-1.5 rounded-lg transition-colors">APIs & Architecture</button>
+                    <button @click="activeSkillTab = 'data'" :class="activeSkillTab === 'data' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-white text-slate-700 dark:bg-slate-800 dark:text-slate-700'" class="px-3 py-1.5 rounded-lg transition-colors">Messaging & Data</button>
+                    <button @click="activeSkillTab = 'cloud'" :class="activeSkillTab === 'cloud' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-white text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700'" class="px-3 py-1.5 rounded-lg transition-colors">Cloud & DevOps</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Backend -->
+                <div x-show="activeSkillTab === 'all' || activeSkillTab === 'backend'" class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="code" class="w-5 h-5 text-brand-600"></i> Backend
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Java 21</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Spring Boot 3.x</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Spring MVC</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">WebClient</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Spring Data JPA/Hibernate</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Node.js</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Express.js</span>
+                    </div>
+                </div>
+
+                <!-- APIs & Architecture -->
+                <div x-show="activeSkillTab === 'all' || activeSkillTab === 'apis'" class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="layers" class="w-5 h-5 text-blue-600"></i> Architecture & APIs
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Microservices</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">GraphQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Apollo Federation/Router</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Stateless Aggregation</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">REST</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Event-Driven Architecture</span>
+                    </div>
+                </div>
+
+                <!-- Messaging & Data -->
+                <div x-show="activeSkillTab === 'all' || activeSkillTab === 'data'" class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="database" class="w-5 h-5 text-amber-600"></i> Messaging & Data
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Apache Kafka</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Kafka Connect</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Avro</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">PostgreSQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Liquibase</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Snowflake</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">MariaDB / MySQL</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & Platform -->
+                <div x-show="activeSkillTab === 'all' || activeSkillTab === 'cloud'" class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="cloud" class="w-5 h-5 text-cyan-600"></i> Cloud & Platform
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">AWS S3</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Kubernetes</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">OpenShift</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Docker</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Helm</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Apigee</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Vault</span>
+                    </div>
+                </div>
+
+                <!-- Security & Delivery -->
+                <div x-show="activeSkillTab === 'all' || activeSkillTab === 'cloud'" class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i> Security & Delivery
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">OAuth2 / JWT</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">IBM Cloud Secrets Manager</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">GitHub Actions</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Trident CI/CD</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">JaCoCo</span>
+                    </div>
+                </div>
+
+                <!-- Testing & Observability -->
+                <div x-show="activeSkillTab === 'all' || activeSkillTab === 'apis'" class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 shadow-sm">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="activity" class="w-5 h-5 text-rose-600"></i> Testing & Observability
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">JUnit / Mockito</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">WireMock</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Embedded PostgreSQL</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Apollo Studio</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Dynatrace / Mezmo</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-mono">Instana / Kibana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Timeline -->
+    <section id="experience" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Professional Experience</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Detailed track record of architectural contributions and production impacts.</p>
+            </div>
+
+            <div class="space-y-10 max-w-5xl">
+                
+                <!-- Cognizant -->
+                <div class="relative pl-6 border-l-2 border-brand-500 space-y-4">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">GraphQL / Platform API Developer</h3>
+                            <div class="text-sm font-semibold text-brand-600 dark:text-brand-500">Cognizant Technology Solutions <span class="text-slate-400 font-normal">| Client: American Airlines (Web Platform GraphQL - ReAccommodation)</span></div>
+                        </div>
+                        <span class="text-xs font-mono px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full">May 2026 – Present | Fort Worth, TX</span>
+                    </div>
+
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside ml-4 leading-relaxed">
+                        <li>Designed and built <strong>ReAccommodation (ReAccom)</strong> from scratch using Java 21, Spring Boot, and Apollo Federation; defined 3 queries + 1 mutation for IROP eligibility, reservation/disruption details, alternate-flight search, and passenger rebook/reissue.</li>
+                        <li>Engineered a stateless aggregation and service-orchestration layer with no local DB, composing live reservation, check-in, and flight data from distributed airline services through reactive <strong>Spring WebClient</strong>.</li>
+                        <li>Configured strict downstream HTTP controls including a 10-second response timeout, max 60 connections, 15-second pending-acquire timeout, and connection lifecycle limits for enterprise integrations.</li>
+                        <li>Supported observed production traffic of <strong>~418 requests/min</strong> across two regions (268 RPM + 150 RPM), utilizing Apollo Studio, Mezmo, and Dynatrace to investigate GraphQL operations and application performance.</li>
+                        <li>Prevented recurrence of a federation-wide schema failure by identifying a root-level authentication directive affecting composed subgraphs that caused ~2 days of blocked composition activity; implemented a pre-composition schema quality gate.</li>
+                        <li>Strengthened CI engineering controls with JaCoCo coverage, Java/Spring Boot standards, and GraphQL schema validation, automating synchronization of compliance checks into repository pipelines.</li>
+                        <li>Migrated 15+ application credentials from GitHub-managed secrets to IBM Cloud Secrets Manager; supported JWT/scope handling and service-to-service OAuth2 client-credentials authentication through Apigee.</li>
+                        <li>Resolved a high-impact production authentication incident within one business day by tracing expired-token failures through Router/coprocessor flows and identifying concatenated stale/current credentials.</li>
+                    </ul>
+
+                    <div class="pt-2 flex flex-wrap gap-1.5 text-xs font-mono text-slate-500">
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Java 21</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Spring Boot</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Apollo Federation</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">WebClient</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">OAuth2/JWT</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Apigee</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">IBM Cloud Secrets Manager</span>
+                    </div>
+                </div>
+
+                <!-- ONEngine AI -->
+                <div class="relative pl-6 border-l-2 border-slate-300 dark:border-slate-700 space-y-4">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Backend Engineer</h3>
+                            <div class="text-sm font-semibold text-slate-700 dark:text-slate-300">ONEngine AI</div>
+                        </div>
+                        <span class="text-xs font-mono px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full">Jun 2025 – Mar 2026</span>
+                    </div>
+
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside ml-4 leading-relaxed">
+                        <li>Built backend capabilities for a work-order/property-restoration platform covering quotations, approvals, workforce/material assignment, job execution, and claims workflows with Liquibase database migrations.</li>
+                        <li>Prototyped a document-management service using AWS S3 presigned URLs, Docker, and Kubernetes during architectural platform evaluation.</li>
+                        <li>Adapted to a redesigned Node.js/Express.js/Prisma stack and developed a work-order-scoped collaboration module for coordinators and field personnel featuring persistent message history and attachment sharing.</li>
+                    </ul>
+
+                    <div class="pt-2 flex flex-wrap gap-1.5 text-xs font-mono text-slate-500">
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Node.js</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Express.js</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Prisma</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">AWS S3</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Kubernetes</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Liquibase</span>
+                    </div>
+                </div>
+
+                <!-- Capgemini -->
+                <div class="relative pl-6 border-l-2 border-slate-300 dark:border-slate-700 space-y-4">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Java Backend Engineer</h3>
+                            <div class="text-sm font-semibold text-slate-700 dark:text-slate-300">Capgemini America <span class="text-slate-400 font-normal">| Client: Discover Financial Services (Collections Value Stream)</span></div>
+                        </div>
+                        <span class="text-xs font-mono px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full">Jan 2023 – Aug 2024</span>
+                    </div>
+
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside ml-4 leading-relaxed">
+                        <li>Designed and built <strong>Collections Pre-D (`coll-pre-d`)</strong> microservice from scratch using Java 21 and Spring Boot, implementing REST APIs, PostgreSQL/JPA persistence, health checks, JWT authentication, and decisioning integrations.</li>
+                        <li>Implemented data workflows with PostgreSQL, JPA/Hibernate, native SQL queries, Liquibase migrations, and an AWS S3 CSV ingestion flow for entity persistence.</li>
+                        <li>Developed Apache Kafka producer/consumer workflows featuring <code>@RetryableTopic</code> backoff mechanisms, dead-letter topics (DLQ), idempotent producers, transactions, and consumer groups utilizing JSON/Avro payloads.</li>
+                        <li>Maintained <strong>80%+ JUnit coverage</strong> and built acceptance test suites with WireMock, H2, embedded PostgreSQL, consumer-contract tests, and container smoke tests.</li>
+                        <li>Upgraded backend APIs from Spring Boot 2.x to 3.1.2 on Java 21, executing the migration from <code>javax.*</code> to <code>jakarta.*</code> and resolving framework dependency compatibility.</li>
+                        <li>Refactored Trident CI/CD pipelines and Helm configurations for PCF-to-OpenShift modernization, onboarding HashiCorp Vault and supporting blue-green deployment readiness.</li>
+                    </ul>
+
+                    <div class="pt-2 flex flex-wrap gap-1.5 text-xs font-mono text-slate-500">
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Java 21</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Spring Boot 3.1.2</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">PostgreSQL</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Apache Kafka</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Avro</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">OpenShift</span>
+                        <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Vault</span>
+                    </div>
+                </div>
+
+                <!-- Collabera & Infosys -->
+                <div class="relative pl-6 border-l-2 border-slate-300 dark:border-slate-700 space-y-4">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Java Backend Developer / Systems Engineer</h3>
+                            <div class="text-sm font-semibold text-slate-700 dark:text-slate-300">Infosys & Collabera <span class="text-slate-400 font-normal">| Client: Verizon</span></div>
+                        </div>
+                        <span class="text-xs font-mono px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full">Jun 2021 – Dec 2022</span>
+                    </div>
+
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside ml-4 leading-relaxed">
+                        <li>Resolved complex production defects across Java backend services and REST APIs, performing root-cause analysis using logs, SQL queries, and debugging tools in SLA-driven environments.</li>
+                        <li>Completed advanced training on Spring Boot microservices, service decomposition, REST API design, and distributed logging best practices.</li>
+                    </ul>
+                </div>
+
+                <!-- IVTL Infoview -->
+                <div class="relative pl-6 border-l-2 border-slate-300 dark:border-slate-700 space-y-4">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Software Engineer</h3>
+                            <div class="text-sm font-semibold text-slate-700 dark:text-slate-300">IVTL Infoview</div>
+                        </div>
+                        <span class="text-xs font-mono px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full">Jun 2016 – May 2018 | Chennai, India</span>
+                    </div>
+
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside ml-4 leading-relaxed">
+                        <li>Developed 20+ dynamic web interfaces with HTML, CSS, JavaScript, and AJAX, implementing core Java backend logic integrated with PostgreSQL for legacy application modernization.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured System Project Section -->
+    <section id="projects" class="py-16 bg-slate-100/60 dark:bg-slate-900/40 border-t border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Featured Architectural Project</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Autonomous multi-agent AI system built with Google Gemini and serverless infrastructure.</p>
+            </div>
+
+            <div class="p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm max-w-4xl space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-3 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-500">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">LifePilot — AI Multi-Agent Personal Planner</h3>
+                            <span class="text-xs font-mono text-slate-500">Autonomous Execution Architecture</span>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-xs font-semibold">Google Cloud Run</span>
+                </div>
+
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-outside ml-4 leading-relaxed">
+                    <li>Architected a multi-agent personal planning platform powered by Google Gemini AI, leveraging embedding models and vector memory for dynamic task routing and contextual execution.</li>
+                    <li>Developed an interactive Streamlit frontend UI and packaged the solution into lightweight Docker containers for serverless auto-scaling deployment on Google Cloud Run.</li>
+                </ul>
+
+                <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded">Google Gemini AI</span>
+                    <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded">Vector Embeddings</span>
+                    <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded">Streamlit</span>
+                    <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded">Docker</span>
+                    <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded">Google Cloud Run</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Education & Professional Certifications</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Education Card -->
+                <div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-600"></i> Education
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200">B.Tech - Information Technology</h4>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Sona College of Technology | 2012 – 2016</div>
+                        <div class="text-xs font-mono text-brand-600 dark:text-brand-500 mt-1 font-semibold">GPA: 8.15 / 10</div>
+                    </div>
+                </div>
+
+                <!-- Certifications Card -->
+                <div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                        <i data-lucide="award" class="w-5 h-5 text-amber-600"></i> Certifications & Training
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> OCI 2025 Foundations Associate</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> SAFe 5 Practitioner</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Kaggle AI Agents Intensive (2025)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Cambridge Business English</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-slate-900 text-slate-400 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="font-mono text-slate-300 font-semibold text-sm">SARANYA GANESAN</div>
+            <p class="max-w-md mx-auto text-slate-500">Senior Java Backend Engineer specializing in cloud-native microservices, Apollo GraphQL, and event-driven architectures.</p>
+            <div class="pt-4 text-slate-600">© 2026 Saranya Ganesan. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
